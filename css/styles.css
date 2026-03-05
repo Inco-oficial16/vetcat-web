@@ -1,0 +1,291 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================================================== */
+:root {
+    --azul-oscuro: #1a3a5f;
+    --azul-medio: #2c5d8f;
+    --celeste-vivo: #4dabf7;
+    --celeste-claro: #e7f5ff;
+    --blanco: #ffffff;
+    --gris-suave: #f8f9fa;
+    --michi-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--blanco);
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+/* ==========================================================================
+   2. COMPONENTES GLOBALES (Navbar, Footer, Botones, WhatsApp)
+   ========================================================================== */
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--blanco);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo h1 { font-size: 1.8rem; color: var(--azul-oscuro); display: flex; align-items: center; gap: 10px; }
+.logo span { color: var(--celeste-vivo); }
+
+.nav-menu { display: flex; list-style: none; }
+.nav-menu li { margin-left: 30px; }
+.nav-menu a { text-decoration: none; color: var(--azul-oscuro); font-weight: 600; transition: 0.3s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--celeste-vivo); }
+
+/* --- BOTONES --- */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--celeste-vivo);
+    color: var(--blanco);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);
+    border: none;
+    cursor: pointer;
+}
+.btn:hover { background-color: var(--azul-medio); transform: translateY(-2px); }
+
+.btn-secundario {
+    display: inline-block;
+    padding: 14px 35px;
+    border: 2px solid var(--azul-oscuro);
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-secundario:hover { background: var(--azul-oscuro); color: var(--blanco); }
+
+/* --- WHATSAPP FLOTANTE --- */
+.whatsapp-btn {
+    position: fixed; bottom: 30px; right: 30px; background-color: #25d366;
+    color: white; width: 65px; height: 65px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000;
+    text-decoration: none; transition: 0.3s;
+}
+.whatsapp-btn:hover { transform: scale(1.1) rotate(10deg); background-color: #128c7e; }
+
+/* --- FOOTER --- */
+footer { background: var(--azul-oscuro); color: var(--blanco); padding: 50px 0; text-align: center; }
+.footer-content p { margin-bottom: 10px; opacity: 0.9; }
+
+/* ==========================================================================
+   3. BANNERS Y HEROS (Fondos con Michis)
+   ========================================================================== */
+
+/* Hero Principal (Index) */
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(26, 58, 95, 0.7), rgba(26, 58, 95, 0.7)), 
+                url('../img/fondo_inicio.jpg') center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: var(--blanco);
+}
+.hero-content h2 { font-size: 3.2rem; margin-bottom: 20px; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-inline: auto; }
+
+/* Estilo Base para Heros Internos */
+.hero-interno {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 50px;
+}
+.hero-interno h2 { font-size: 2.8rem; margin-bottom: 10px; }
+.hero-interno p { font-size: 1.2rem; opacity: 0.9; }
+
+/* Fondos Específicos */
+.hero-productos {
+    background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), 
+                url('../img/fondo_productos.jpg') center/cover no-repeat;
+}
+.hero-servicios {
+    background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), 
+                url('../img/fondo_servicios.jpg') center/cover no-repeat;
+}
+.hero-contacto {
+    background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), 
+                url('../img/fondo_contacto.jpg') center/cover no-repeat;
+}
+
+/* ==========================================================================
+   4. PÁGINA DE INICIO (Secciones Index)
+   ========================================================================== */
+
+.destacados { padding: 80px 0; background-color: var(--gris-suave); text-align: center; }
+.destacados h2 { margin-bottom: 50px; color: var(--azul-oscuro); font-size: 2.3rem; }
+
+.grid-destacados { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.card-info {
+    background: var(--blanco);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--michi-shadow);
+    border-top: 6px solid var(--celeste-vivo);
+    transition: 0.3s;
+    text-align: center;
+}
+.card-info:hover { transform: translateY(-10px); }
+.card-icon { font-size: 2.5rem; color: var(--celeste-vivo); margin-bottom: 20px; }
+
+.marcas { padding: 60px 0; background: #fff; text-align: center; }
+.marcas-titulo { color: #aaa; margin-bottom: 30px; font-weight: 800; letter-spacing: 2px; font-size: 0.9rem; }
+.brands-grid { 
+    display: flex; justify-content: space-around; align-items: center; 
+    opacity: 0.5; filter: grayscale(100%); flex-wrap: wrap; gap: 40px; 
+}
+.brands-grid span { font-size: 1.6rem; font-weight: bold; color: var(--azul-oscuro); }
+
+.cta-productos { padding: 80px 0; text-align: center; background: var(--blanco); }
+.cta-box {
+    background: var(--celeste-claro);
+    padding: 60px;
+    border-radius: 30px;
+    border: 2px dashed var(--celeste-vivo);
+}
+
+/* ==========================================================================
+   5. PÁGINA DE PRODUCTOS
+   ========================================================================== */
+
+.categoria-seccion { margin-bottom: 50px; }
+
+.categoria-header {
+    display: flex; align-items: center; gap: 15px;
+    margin-bottom: 25px; border-bottom: 2px solid var(--celeste-claro);
+    padding-bottom: 10px;
+}
+.categoria-header i { font-size: 1.8rem; color: var(--celeste-vivo); }
+.categoria-header h3 { color: var(--azul-oscuro); font-size: 1.6rem; }
+
+.grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+
+.producto-card {
+    background: var(--blanco);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--michi-shadow);
+    text-align: center;
+    transition: 0.3s;
+}
+.producto-card:hover { transform: scale(1.03); }
+
+.producto-img {
+    width: 100%; height: 180px; overflow: hidden;
+    border-radius: 10px; margin-bottom: 15px;
+}
+.producto-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.producto-card:hover .producto-img img { transform: scale(1.1); }
+
+.tag {
+    background: var(--azul-oscuro); color: white;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 0.75rem; font-weight: bold;
+}
+
+/* ==========================================================================
+   6. PÁGINA DE SERVICIOS
+   ========================================================================== */
+
+.grid-servicios {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; margin-bottom: 60px;
+}
+
+.servicio-card {
+    background: var(--blanco); padding: 40px 25px;
+    border-radius: 20px; text-align: center;
+    box-shadow: var(--michi-shadow); transition: 0.3s;
+    border: 1px solid var(--celeste-claro);
+}
+.servicio-card:hover { border-color: var(--celeste-vivo); transform: translateY(-5px); }
+
+.servicio-icon {
+    width: 70px; height: 70px; background: var(--celeste-claro);
+    color: var(--azul-medio); font-size: 1.8rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; margin: 0 auto 20px;
+}
+
+.urgencias-box {
+    background: linear-gradient(135deg, #e63946, #b11d28);
+    border-radius: 30px; padding: 50px;
+    color: white; text-align: center; margin-bottom: 80px;
+}
+
+.btn-urgencia {
+    display: inline-block; background: white; color: #e63946;
+    padding: 15px 40px; border-radius: 50px; text-decoration: none;
+    font-weight: bold; margin-top: 20px; transition: 0.3s;
+}
+.btn-urgencia:hover { background: var(--azul-oscuro); color: white; }
+
+/* ==========================================================================
+   7. PÁGINA DE CONTACTO
+   ========================================================================== */
+
+.contacto-flex {
+    display: flex; flex-wrap: wrap; gap: 50px; margin-bottom: 80px;
+}
+
+.info-contacto, .formulario-caja { flex: 1; min-width: 300px; }
+
+.info-contacto h3 { color: var(--azul-oscuro); font-size: 2rem; margin-bottom: 20px; }
+
+.horarios {
+    margin-top: 30px; padding: 20px;
+    background: var(--celeste-claro); border-radius: 15px;
+}
+
+.urgencia-texto { color: #e63946; font-weight: bold; margin-top: 10px; }
+
+.formulario-caja {
+    background: var(--blanco); padding: 40px;
+    border-radius: 20px; box-shadow: var(--michi-shadow);
+}
+
+.input-group { margin-bottom: 20px; text-align: left; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--azul-oscuro); }
+
+.input-group input, .input-group select, .input-group textarea {
+    width: 100%; padding: 12px;
+    border: 2px solid var(--gris-suave); border-radius: 10px;
+    outline: none; transition: 0.3s; font-family: inherit;
+}
+.input-group input:focus, .input-group textarea:focus { border-color: var(--celeste-vivo); }
